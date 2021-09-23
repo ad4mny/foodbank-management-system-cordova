@@ -1,27 +1,35 @@
 var login = function () {
 
-    var login_username = $("#login_username").val();
-    var login_password = $("#login_password").val();
+    var username = $("#username").val();
+    var password = $("#password").val();
 
-    if ($.trim(login_username).length > 0 && $.trim(login_password).length > 0) {
-
-        var input = {
-            "username": login_username,
-            "password": login_password
-        };
+    if ($.trim(username).length > 0 && $.trim(password).length > 0) {
 
         $.ajax({
             type: "POST",
             url: web_links + "api/get_login",
-            data: input,
+            data: {
+                "username": username,
+                "password": password
+            },
             dataType: 'JSON',
+            beforeSend: function () {
+                $('#loadGif').show();
+            },
             success: function (data) {
+
                 if (data != false) {
-                    localStorage.setItem('users', JSON.stringify(data));
+                    localStorage.setItem('ugf_users', JSON.stringify(data));
                     location.replace('index.html');
                 } else {
                     alert('Incorrect username or password.');
                 }
+            },
+            error: function () {
+                $('#display').html('<div class="row"><div class="col"><p class="my-3 text-muted">Internal server error, please reload.</p></div></div>');
+            },
+            complete: function () {
+                $('#loadGif').hide();
             }
 
         });
@@ -32,37 +40,44 @@ var login = function () {
     }
 };
 
-
-var register = function () {
+var signup = function () {
 
     var name = $("#name").val();
-    var contact = $("#contact").val();
+    var card = $("#card").val();
     var username = $("#username").val();
-    var password = $("#pwd").val();
+    var password = $("#password").val();
 
     if (comparePassword() != false) {
-
-        var input = {
-            "name": name,
-            "contact": contact,
-            "username": username,
-            "password": password
-        };
 
         $.ajax({
             type: "POST",
             url: web_links + "api/get_signup",
-            data: input,
+            data: {
+                "name": name,
+                "card": card,
+                "username": username,
+                "password": password
+            },
             dataType: 'JSON',
+            beforeSend: function () {
+                $('#loadGif').show();
+            },
             success: function (data) {
+
                 if (data == false) {
                     alert('Error signing you up.');
                 } else if (data == "Username unavailable, register again.") {
                     alert(data);
                 } else {
-                    localStorage.setItem('users', JSON.stringify(data));
-                    location.replace('index.html');
+                    alert('Sign Up success, please proceed login.');
+                    location.replace('login.html');
                 }
+            },
+            error: function () {
+                $('#display').html('<div class="row"><div class="col"><p class="my-3 text-muted">Internal server error, please reload.</p></div></div>');
+            },
+            complete: function () {
+                $('#loadGif').hide();
             }
         });
 
@@ -70,21 +85,13 @@ var register = function () {
 
 };
 
-
 var comparePassword = function () {
 
-    if ($('#pwd').val() != $('#c_pwd').val()) {
-        $('#c_pwd').addClass("border border-danger");
+    if ($('#password').val() != $('#c_password').val()) {
+        $('#c_password').addClass("border border-danger");
         return false;
     } else {
-        $('#c_pwd').removeClass("border border-danger");
+        $('#c_password').removeClass("border border-danger");
         return true;
     }
-};
-
-var logout = function () {
-
-    localStorage.clear();
-    location.replace('index.html');
-
 };
