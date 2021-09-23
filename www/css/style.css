@@ -1,0 +1,9 @@
+body,
+html {
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/bg.jpg') no-repeat center fixed;
+
+}

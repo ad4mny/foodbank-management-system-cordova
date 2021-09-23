@@ -1,51 +1,76 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
+<html lang="en">
 
-    http://www.apache.org/licenses/LICENSE-2.0
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eHungry</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/app/main.js"></script>
+    <script type="text/javascript" src="js/app/login.js"></script>
+</head>
 
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
-<html>
-    <head>
-        <meta charset="utf-8">
-        <!--
-        Customize this policy to fit your own app's needs. For more guidance, see:
-            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-        Some notes:
-            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-        <meta name="color-scheme" content="light dark">
-        <link rel="stylesheet" href="css/index.css">
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+<body class="bg-light">
+
+    <div class="bg-dark">
+        <div class="text-center pt-3">
+            <h3 class="text-white fw-lighter mb-0">UGiving Foodbank</h3>
+        </div>
+
+        <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-transparent">
+            <div class="text-center flex-fill">
+                <a class="btn text-white" href="#">
+                    <i class="fas fa-cookie-bite fa-fw fa-lg"></i>
+                </a>
+            </div>
+            <div class="text-center  flex-fill">
+                <a class="btn text-white" href="catalog.html">
+                    <i class="fas fa-box-open fa-fw fa-lg"></i>
+                </a>
+            </div>
+            <div class="text-center flex-fill">
+                <a class="btn text-white" href="table.html">
+                    <i class="fas fa-chart-bar fa-fw fa-lg"></i>
+                </a>
+            </div>
+            <div class="text-center flex-fill">
+                <a href="checkout.html" class="btn text-white">
+                    <i class="fas fa-history fa-fw fa-lg"></i>
+                </a>
+            </div>
+            <div class="text-center flex-fill" id="profile_button">
+                <button class="btn text-white" data-bs-toggle="modal" data-bs-target="#modal_login">
+                    <i class="fas fa-sign-in-alt fa-fw fa-lg"></i>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container position-absolute top-50 start-50 translate-middle-x w-100">
+        <div class="row ">
+            <div class="col text-center">
+                <h1 class="text-white">Welcome, Guest.</h1>
+                <p class="lead">
+                    <a href="http://localhost/foodbank-management-system/login"
+                        class="btn btn-outline-light  rounded-0">Login here.</a>
+                </p>
             </div>
         </div>
-        <script src="cordova.js"></script>
-        <script src="js/index.js"></script>
-    </body>
+    </div>
+
+    <footer class="page-footer font-small w-100" style="position: absolute; bottom: 0;z-index: 1100 !important;">
+        <div class="footer-copyright text-center text-white py-2">
+            <small> &copy; 2021 UGiving
+            </small>
+        </div>
+    </footer>
+
+</body>
+
 </html>
