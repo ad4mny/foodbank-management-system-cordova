@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="js/zingchart.js"></script>
+    <script type="text/javascript" src="js/zingchart.min.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/app/app.js"></script>
     <script type="text/javascript" src="js/app/donation.js"></script>
@@ -65,9 +65,11 @@
                 <h4 class="text-white border-bottom border-2 pb-1">Daily donation statistic</h4>
             </div>
         </div>
-        <!-- Content goes here  -->
-
-
+        <div class="row mb-2">
+            <div class="col overflow-auto">
+                <div id="myChart" ></div>
+            </div>
+        </div>
     </div>
 
     <footer class="page-footer font-small w-100" style="position: absolute; bottom: 0;z-index: 1100 !important;">
