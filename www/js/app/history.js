@@ -1,6 +1,6 @@
 window.addEventListener('load', (event) => {
 
-    if (ugf_user_token.user_id != null) {
+    if (ugf_user_token != null) {
         $.ajax({
             type: "POST",
             url: web_links + "api/get_history",
@@ -63,7 +63,7 @@ window.addEventListener('load', (event) => {
         $('#display').append(
             '    <div class="row bg-white mb-2 mx-1 py-2 shadow">' +
             '        <div class="col">' +
-            '           <p> Please login to view your taken item history.</p>' +
+            '           <p> Please login to view your foodbank item history.</p>' +
             '        </div>' +
             '    </div>'
         );

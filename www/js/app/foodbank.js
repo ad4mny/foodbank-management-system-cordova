@@ -29,7 +29,7 @@ window.addEventListener('load', (event) => {
                         '                <div class="card h-100 rounded-0 border-0 shadow">' +
                         '                    <img class="card-img-top" src="' + img + '" alt="No Image">' +
                         '                    <div class="card-body">' +
-                        '                        <h5 class="mb-0 fw-bold">' + data[i].item_name + '</h5>' +
+                        '                        <h5 class="fw-bold mb-0">' + data[i].item_name + '</h5>' +
                         '                        <div class="card-text">' + data[i].item_location + '</div>' +
                         '                        <div class="card-text pt-2">' + data[i].item_quantity + ' unit(s) left.</div>' +
                         '                        <div class="card-text text-muted fw-lighter"><small>Last Updated at ' + data[i].datetime + '</small>' +
@@ -67,6 +67,7 @@ window.addEventListener('load', (event) => {
 $(document).on('click', '#takeItem', function () {
 
     var item_id = this.value;
+    if (ugf_user_token != null) {
 
     if (item_id != null) {
         $.ajax({
@@ -99,5 +100,7 @@ $(document).on('click', '#takeItem', function () {
 
         });
     }
-
+    } else {
+        alert('Please login to access the foodbank services');
+    }
 });
