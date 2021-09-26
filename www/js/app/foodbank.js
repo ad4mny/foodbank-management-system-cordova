@@ -12,8 +12,8 @@ window.addEventListener('load', (event) => {
             if (data != false) {
                 for (var i = 0; i < data.length; i++) {
 
-                    if (data[i].cd_img != null) {
-                        var img = web_links + 'assets/catalog/' + data[i].cd_img;
+                    if (data[i].item_image != null) {
+                        var img = web_links + 'assets/image/' + data[i].item_image;
                     } else {
                         var img = 'img/catalog_placeholder.png';
                     }

@@ -14,13 +14,21 @@ window.addEventListener('load', (event) => {
             success: function (data) {
 
                 if (data != false) {
-                    
+
                     for (var i = 0; i < data.length; i++) {
 
-                        if (data[i].cd_img != null) {
-                            var img = web_links + 'assets/catalog/' + data[i].cd_img;
+                        if (data[i].item_image != null) {
+                            var img = web_links + 'assets/image/' + data[i].item_image;
                         } else {
                             var img = 'img/catalog_placeholder.png';
+                        }
+
+
+                        if (data[i].item_status != 'Taken successfully') {
+                            var btn = '<button class="btn btn-danger btn-sm mb-1" id="removeItem" value="' + data[i].item_id + '/' + data[i].id + '"><i class="fas fa-times fa-fw"></i></button>' +
+                                '<button class="btn btn-secondary btn-sm" id="scanItem" value="' + data[i].item_id + '/' + data[i].id + '"><i class="fas fa-qrcode fa-fw"></i></button>';
+                        } else {
+                            var btn = "";
                         }
 
                         $('#display').append(
@@ -33,8 +41,7 @@ window.addEventListener('load', (event) => {
                             '        <small class="text-muted fw-light">' + data[i].item_status + '</small>' +
                             '        </div>' +
                             '        <div class="col-2">' +
-                            '            <button class="btn btn-danger btn-sm mb-1" id="removeItem" value="' + data[i].id + '"><i class="fas fa-times fa-fw"></i></button>' +
-                            '            <button class="btn btn-secondary btn-sm" id="scanItem" value="' + data[i].id + '"><i class="fas fa-qrcode fa-fw"></i></button>' +
+                            btn +
                             '        </div>' +
 
                             '    </div>'
@@ -72,18 +79,17 @@ window.addEventListener('load', (event) => {
 
 $(document).on('click', '#scanItem', function () {
 
-    var id = this.value;
+    var id = this.value.split("/");
     cordova.plugins.barcodeScanner.scan(function (result) {
 
         var scanned_id = result["text"];
 
-        if (id === scanned_id) {
+        if (id[0] === scanned_id) {
             $.ajax({
                 type: "POST",
                 url: web_links + "api/set_taken",
                 data: {
-                    user_id: ugf_user_token.user_id,
-                    item_id: scanned_id
+                    history_id: id[1]
                 },
                 dataType: 'JSON',
                 beforeSend: function () {
