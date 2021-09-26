@@ -1,4 +1,4 @@
-var web_links = "http://localhost/foodbank-management-system/";
+var web_links = "https://ugivingump.000webhostapp.com/";
 var ugf_user_token = JSON.parse(localStorage.getItem('ugf_users'));
 
 window.addEventListener('load', (event) => {
