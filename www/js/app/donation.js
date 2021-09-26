@@ -59,7 +59,7 @@ window.addEventListener('load', (event) => {
 
         },
         error: function () {
-            $('#display').html('<div class="row"><div class="col"><p class="my-3 text-white">Internal server error, please reload.</p></div></div>');
+            $('#display').append('<div class="row"><div class="col"><p class="my-3 text-white">Internal server error, please reload.</p></div></div>');
         },
         complete: function () {
             $('#loadGif').hide();
